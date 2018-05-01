@@ -1,10 +1,9 @@
 <component name="libraryTable">
   <library name="libraries">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/WebCrawler/libraries" />
+      <root url="jar://$PROJECT_DIR$/WebCrawler/libraries/json-simple-1.1.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/WebCrawler/libraries" recursive="false" />
   </library>
 </component>
