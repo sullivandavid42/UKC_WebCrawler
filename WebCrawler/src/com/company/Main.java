@@ -1,6 +1,6 @@
 package com.company;
-
 import Parser.Parser_URL_Input;
+
 
 public class Main {
 
@@ -12,6 +12,5 @@ public class Main {
         tt.file_input(); } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
