@@ -65,18 +65,8 @@
     "home": "false"
   },
   {
-    "id": 14,
-    "url": "youtu.be/",
-    "home": "false"
-  },
-  {
     "id": 15,
     "url": "amazon.com/",
-    "home": "false"
-  },
-  {
-    "id": 16,
-    "url": "goo.gl/",
     "home": "false"
   },
   {
@@ -120,11 +110,6 @@
     "home": "false"
   },
   {
-    "id": 25,
-    "url": "qq.com/",
-    "home": "false"
-  },
-  {
     "id": 26,
     "url": "buydomains.com/",
     "home": "false"
@@ -137,11 +122,6 @@
   {
     "id": 28,
     "url": "nytimes.com/",
-    "home": "false"
-  },
-  {
-    "id": 29,
-    "url": "t.co/",
     "home": "false"
   },
   {
