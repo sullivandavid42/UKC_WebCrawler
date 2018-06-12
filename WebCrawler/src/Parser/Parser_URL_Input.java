@@ -40,9 +40,9 @@ public class Parser_URL_Input extends Component {
             for (int i = 0; i < ja.size(); i++) {
                 JSONObject tempJsonObj = (JSONObject) ja.get(i);
                 list_url.add(tempJsonObj.get("url").toString());
-                System.out.println(String.format("ID: %s", tempJsonObj.get("id").toString()));
-                System.out.println(String.format("URL: %s", tempJsonObj.get("url").toString()));
-                System.out.println(String.format("Flag-Home: %s", tempJsonObj.get("home")));
+              //  System.out.println(String.format("ID: %s", tempJsonObj.get("id").toString()));
+              //  System.out.println(String.format("URL: %s", tempJsonObj.get("url").toString()));
+              //  System.out.println(String.format("Flag-Home: %s", tempJsonObj.get("home")));
             }
         }
         else {
