@@ -37,7 +37,7 @@ public class Dom_Opening {
                    _verified_list.add("https://www." + _url_list.get(i));
 
                } catch (Exception e) {
-                   System.err.println("Unknow Host. URL is not reacheable or SSL certificate is invalid.");
+                   System.err.println(_url_list.get(i) + "Unknow Host. URL is not reacheable or SSL certificate is invalid.");
                   // e.printStackTrace();
                }
            }
@@ -47,7 +47,14 @@ public class Dom_Opening {
        }
 
        /*
-       This method aim to find the login URK from each website in the JSON file.
+       This method aims to remove all duplicate domain name from @_URLlist
+       */
+       public void Remove_DuplicateURLs() {
+
+       }
+
+       /*
+       This method aims to find the login URL from each website in the JSON file.
        When login page has been found, the URL has to be save in a List<String>
        */
        public void Find_LoginURLs() {
