@@ -6,6 +6,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,19 +40,38 @@ public class Dom_Opening {
                    _verified_list.add("https://www." + _url_list.get(i));
 
                } catch (Exception e) {
-                   System.err.println(_url_list.get(i) + "Unknow Host. URL is not reacheable or SSL certificate is invalid.");
+                   System.err.println(_url_list.get(i) + "Unknown Host. URL is not reacheable or SSL certificate is invalid.");
                   // e.printStackTrace();
                }
            }
            this._UrlList = _verified_list;
            System.out.println("DEBUG: NOMBRE URLS VALIDES : " + this._UrlList.size());
            System.out.println("OK");
+           System.out.println("SUBDOMAIN TEST : ");
+           this.Remove_SubDomainURLs();
+       }
+
+       /*
+       This method removes subdomains from @_UrlList
+        */
+       public void Remove_SubDomainURLs() throws URISyntaxException{
+           URI uri;
+           String domain;
+           List<String> clear_list = new ArrayList<>();
+
+           for (int i = 0; i < this._UrlList.size(); i++) {
+               uri = new URI(this._UrlList.get(i));
+               domain = uri.getHost();
+               System.out.println(domain.startsWith("www.") ? domain.substring(4) : domain);
+               clear_list.add(domain.startsWith("www.") ? domain.substring(4) :  domain);
+           }
+           System.out.println("URL Number without SUBDOMAINS :" + clear_list.size());
        }
 
        /*
        This method aims to remove all duplicate domain name from @_URLlist
        */
-       public void Remove_DuplicateURLs() {
+       public void Remove_DuplicateURLs() throws URISyntaxException {
 
        }
 
