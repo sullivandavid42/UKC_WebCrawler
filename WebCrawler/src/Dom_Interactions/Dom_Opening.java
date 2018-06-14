@@ -10,15 +10,21 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/*
+    @Dom_Opening class : This class aims to open and basicly interact with each Websites DOM.
+    Dom_Opening.Fetch_URL() try to ping each websites' IP sent by @Parser_URL_Input.
+ */
+
 public class Dom_Opening {
 
-
+    List<String> _UrlList;
         /*
         This method instanciate Parser_URL_Input() class and execute file_input.
         Each website in the JSON file is trying to be ping : If ping OK -> DOM reader
-                                                             If not -> Remove URL from JSON file
-         */
-       public void Get_DOM() throws Exception {
+                                                             If not -> Remove URL from List<String>
+        */
+       public void Fetch_URL() throws Exception {
            int _size_urllist;
            List<String> _url_list = new Parser_URL_Input().file_input();
            List<String> _verified_list = new ArrayList<String>();
@@ -35,12 +41,13 @@ public class Dom_Opening {
                    e.printStackTrace();
                }
            }
+           this._UrlList = _verified_list;
        }
 
        /*
        This method aim to find the login URK from each website in the JSON file.
        When login page has been found, the URL has to be save in a List<String>
-        */
+       */
        public void Find_LoginURLs() {
 
        }
