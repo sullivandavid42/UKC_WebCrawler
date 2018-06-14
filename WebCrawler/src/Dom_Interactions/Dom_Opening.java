@@ -36,7 +36,7 @@ public class Dom_Opening {
                    System.out.println(_doc.title());
                    _verified_list.add("https://www." + _url_list.get(i));
 
-               } catch (UnknownHostException e) {
+               } catch (Exception e) {
                    System.err.println("Unknow Host. URL is not reacheable");
                    e.printStackTrace();
                }
