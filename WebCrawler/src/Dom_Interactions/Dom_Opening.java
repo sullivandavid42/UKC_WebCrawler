@@ -37,11 +37,13 @@ public class Dom_Opening {
                    _verified_list.add("https://www." + _url_list.get(i));
 
                } catch (Exception e) {
-                   System.err.println("Unknow Host. URL is not reacheable");
-                   e.printStackTrace();
+                   System.err.println("Unknow Host. URL is not reacheable or SSL certificate is invalid.");
+                  // e.printStackTrace();
                }
            }
            this._UrlList = _verified_list;
+           System.out.println("DEBUG: NOMBRE URLS VALIDES : " + this._UrlList.size());
+           System.out.println("OK");
        }
 
        /*
