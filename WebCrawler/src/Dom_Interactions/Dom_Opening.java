@@ -45,9 +45,6 @@ public class Dom_Opening {
                }
            }
            this._UrlList = _verified_list;
-           System.out.println("DEBUG: NOMBRE URLS VALIDES : " + this._UrlList.size());
-           System.out.println("OK");
-           System.out.println("SUBDOMAIN TEST : ");
            this.Remove_SubDomainURLs();
        }
 
@@ -58,14 +55,17 @@ public class Dom_Opening {
            URI uri;
            String domain;
            List<String> clear_list = new ArrayList<>();
-
+           System.out.println("Removing SUBDOMAINS from list");
            for (int i = 0; i < this._UrlList.size(); i++) {
                uri = new URI(this._UrlList.get(i));
                domain = uri.getHost();
-               System.out.println(domain.startsWith("www.") ? domain.substring(4) : domain);
                clear_list.add(domain.startsWith("www.") ? domain.substring(4) :  domain);
            }
-           System.out.println("URL Number without SUBDOMAINS :" + clear_list.size());
+           this._UrlList.clear();
+           for (int i = 0; i < clear_list.size(); i++) {
+               this._UrlList.add("https://www." + clear_list.get(i));
+               System.out.println(this._UrlList.get(i));
+           }
        }
 
        /*
