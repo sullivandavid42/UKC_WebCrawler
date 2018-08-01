@@ -36,16 +36,17 @@ public class Dom_Opening {
            for (int i = 0; i < _size_urllist; i++) {
                try {
                    Document _doc = Jsoup.connect("https://www." + _url_list.get(i)).get();
-                   System.out.println(_doc.title());
+                   //System.out.println(_doc.title());
                    _verified_list.add("https://www." + _url_list.get(i));
 
                } catch (Exception e) {
-                   System.err.println(_url_list.get(i) + "Unknown Host. URL is not reacheable or SSL certificate is invalid.");
-                  // e.printStackTrace();
+                   //System.err.println(_url_list.get(i) + "Unknown Host. URL is not reacheable or SSL certificate is invalid.");
+                  //e.printStackTrace();
                }
            }
            this._UrlList = _verified_list;
            this.Remove_SubDomainURLs();
+           this.Remove_DuplicateURLs();
        }
 
        /*
@@ -64,7 +65,7 @@ public class Dom_Opening {
            this._UrlList.clear();
            for (int i = 0; i < clear_list.size(); i++) {
                this._UrlList.add("https://www." + clear_list.get(i));
-               System.out.println(this._UrlList.get(i));
+               //System.out.println(this._UrlList.get(i));
            }
        }
 
@@ -72,7 +73,17 @@ public class Dom_Opening {
        This method aims to remove all duplicate domain name from @_URLlist
        */
        public void Remove_DuplicateURLs() throws URISyntaxException {
-
+           System.out.println("Removing DUPLICATE ENTRIES from list");
+           for (int i = 0; i < this._UrlList.size(); i++) {
+               for (int j = 1; j < this._UrlList.size(); j++) {
+                   if (this._UrlList.get(i).equals(this._UrlList.get(j))) {
+                       this._UrlList.remove(j);
+                       break;
+                   }
+               }
+           }
+           //
+           // System.out.println(this._UrlList);
        }
 
        /*
