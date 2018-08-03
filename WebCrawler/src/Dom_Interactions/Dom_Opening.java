@@ -1,15 +1,14 @@
 package Dom_Interactions;
 
 import Parser.Parser_URL_Input;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,12 +40,13 @@ public class Dom_Opening {
 
                } catch (Exception e) {
                    //System.err.println(_url_list.get(i) + "Unknown Host. URL is not reacheable or SSL certificate is invalid.");
-                  //e.printStackTrace();
+                  e.printStackTrace();
                }
            }
            this._UrlList = _verified_list;
            this.Remove_SubDomainURLs();
            this.Remove_DuplicateURLs();
+           this.Find_LoginURLs();
        }
 
        /*
@@ -91,7 +91,32 @@ public class Dom_Opening {
        When login page has been found, the URL has to be save in a List<String>
        */
        public void Find_LoginURLs() {
+           JSONObject _json = new JSONObject();
+           for (int i = 0; i < this._UrlList.size(); i++) {
+               try {
+                   List<String> _type = new ArrayList<>();
+                   Document _doc = Jsoup.connect(this._UrlList.get(i)).get();
+                   Elements _inputs = _doc.getElementsByTag("input");
+                   for (int j = 0; j < _inputs.size(); j++) {
+                       if (_inputs.get(j).attr("type").equals("email") || _inputs.get(j).attr("type").equals("password") || _inputs.get(j).attr("type").equals("submit")) {
+                           _type.add(_inputs.get(j).attr("type"));
+                           //System.out.println(item);
+                       }
+                   }
+                   _json.put("website", this._UrlList.get(i));
+                   _json.put("input", _type);
+                   if (_type.isEmpty()) {
+                       _json.put("loginPage", 0);
+                   }
+                   else {
+                       _json.put("loginPage", 1);
+                   }
+                   System.out.println(_json.toString());
 
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }
        }
 
 }
