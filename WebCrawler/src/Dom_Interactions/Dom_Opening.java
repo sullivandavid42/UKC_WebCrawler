@@ -21,6 +21,7 @@ import java.util.List;
 public class Dom_Opening {
 
     List<String> _UrlList;
+    JSONObject _UrlListExt = new JSONObject();
         /*
         This method instanciate Parser_URL_Input() class and execute file_input.
         Each website in the JSON file is trying to be ping : If ping OK -> DOM reader
@@ -91,7 +92,6 @@ public class Dom_Opening {
        When login page has been found, the URL has to be save in a List<String>
        */
        public void Find_LoginURLs() {
-           JSONObject _json = new JSONObject();
            for (int i = 0; i < this._UrlList.size(); i++) {
                try {
                    List<String> _type = new ArrayList<>();
@@ -103,15 +103,15 @@ public class Dom_Opening {
                            //System.out.println(item);
                        }
                    }
-                   _json.put("website", this._UrlList.get(i));
-                   _json.put("input", _type);
+                   _UrlListExt.put("website", this._UrlList.get(i));
+                   _UrlListExt.put("input", _type);
                    if (_type.isEmpty()) {
-                       _json.put("loginPage", 0);
+                       _UrlListExt.put("loginPage", 0);
                    }
                    else {
-                       _json.put("loginPage", 1);
+                       _UrlListExt.put("loginPage", 1);
                    }
-                   System.out.println(_json.toString());
+                   System.out.println(_UrlListExt.toString());
 
                } catch (Exception e) {
                    e.printStackTrace();
