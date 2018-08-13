@@ -25,6 +25,11 @@
     "home": "false"
   },
   {
+    "id": 1,
+    "url": "twitter.com/",
+    "home": "false"
+  },
+  {
     "id": 6,
     "url": "wordpress.org/",
     "home": "false"

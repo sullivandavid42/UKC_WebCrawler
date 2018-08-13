@@ -1,7 +1,6 @@
 package Dom_Interactions;
 
 import Parser.Parser_URL_Input;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -76,7 +75,10 @@ public class Dom_Opening {
        public void Remove_DuplicateURLs() throws URISyntaxException {
            System.out.println("Removing DUPLICATE ENTRIES from list");
            for (int i = 0; i < this._UrlList.size(); i++) {
-               for (int j = 1; j < this._UrlList.size(); j++) {
+               //System.out.println(this._UrlList.get(i));
+               for (int j = i + 1; j < this._UrlList.size(); j++) {
+                   //System.out.println(this._UrlList.get(j));
+                   //System.out.println("------");
                    if (this._UrlList.get(i).equals(this._UrlList.get(j))) {
                        this._UrlList.remove(j);
                        break;
